@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <exec.mainClass>com.ridexone.jdbc.connection.JdbcConnection</exec.mainClass>
+        <exec.mainClass>com.ridexone.jdbc.connection.Main</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
