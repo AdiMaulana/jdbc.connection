@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         AndroidVersionInterface dao = DaoFactory.getAndroidVersionDAO();
         Scanner scanner = new Scanner(System.in);
@@ -45,13 +46,13 @@ public class Main {
             }
         }
     }
-    
+
     private static void tambahAndroidVersion(AndroidVersionInterface dao, Scanner scanner) {
         System.out.print("Masukkan Nama Versi: ");
         String versionName = scanner.nextLine();
         System.out.print("Masukkan API Level: ");
         int apiLevel = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.print("Masukkan Tanggal Rilis (YYYY-MM-DD): ");
         String[] tanggal = scanner.nextLine().split("-");
         Date releaseDate = new Date(Integer.parseInt(tanggal[0]) - 1900, Integer.parseInt(tanggal[1]) - 1, Integer.parseInt(tanggal[2]));
@@ -64,20 +65,28 @@ public class Main {
     private static void lihatSemuaAndroidVersion(AndroidVersionInterface dao) {
         List<AndroidVersion> versions = dao.getAll();
         System.out.println("Daftar Versi Android:");
+        // Cetak header tabel
+        System.out.println("+-------+-------------------------------------+------------+");
+        System.out.printf("| %-5s | %-35s | %-10s |\n", "ID", "Nama Versi", "API Level");
+        System.out.println("+-------+-------------------------------------+------------+");
+        // Cetak data
         for (AndroidVersion version : versions) {
-            System.out.println("ID: " + version.getId() + ", Nama Versi: " + version.getVersionName() + ", API Level: " + version.getApiLevel());
+            System.out.printf("| %-5d | %-35s | %-10d |\n",
+                    version.getId(), version.getVersionName(), version.getApiLevel());
         }
+        // Cetak footer tabel
+        System.out.println("+-------+-------------------------------------+------------+");
     }
 
     private static void editAndroidVersion(AndroidVersionInterface dao, Scanner scanner) {
         System.out.print("Masukkan ID Versi yang ingin diedit: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.print("Masukkan Nama Versi baru: ");
         String versionName = scanner.nextLine();
         System.out.print("Masukkan API Level baru: ");
         int apiLevel = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.print("Masukkan Tanggal Rilis baru (YYYY-MM-DD): ");
         String[] tanggal = scanner.nextLine().split("-");
         Date releaseDate = new Date(Integer.parseInt(tanggal[0]) - 1900, Integer.parseInt(tanggal[1]) - 1, Integer.parseInt(tanggal[2]));
