@@ -7,8 +7,7 @@ Tampilan program:
 
 berikut code untuk melakukan crud menggunakan DaoFactory:
 
-
-`package com.ridexone.jdbc.connection.dao;
+```package com.ridexone.jdbc.connection.dao;
 
 import com.ridexone.jdbc.connection.model.AndroidVersion;
 import java.util.List;
@@ -20,4 +19,5 @@ public interface AndroidVersionInterface {
     void update(AndroidVersion version);
     void delete(int id);
 }
-`
+```
+
